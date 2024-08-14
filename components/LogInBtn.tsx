@@ -15,16 +15,19 @@ export default function LogInBtn() {
     setToken(savedToken || null);
   }, []);
 
+  // logout
   const handleLogout = () => {
     Cookies.remove("token");
     window.location.reload();
     setToken(null);
   };
 
+  // opens modal for log in form
   const handleModalOpen = () => {
     setModalOpen(true);
   };
 
+  // closes modal
   const handleModalClose = () => {
     setModalOpen(false);
     const savedToken = Cookies.get("token");
@@ -36,14 +39,14 @@ export default function LogInBtn() {
       {token ? (
         <button
           onClick={handleLogout}
-          className="cursor-pointer bg-[#66837e] text-[#eaefef] px-[20px] py-[7px] rounded-md w-[100px] hover:bg-[#556e6b] transition"
+          className="flex text-[16px] font-normal items-center justify-center cursor-pointer bg-[#66837e] text-[#eaefef] px-[20px] py-[7px] rounded-md w-[100px] hover:bg-[#556e6b] transition"
         >
           Logout
         </button>
       ) : (
         <button
           onClick={handleModalOpen}
-          className="cursor-pointer bg-[#66837e] text-[#eaefef] px-[20px] py-[7px] rounded-md w-[100px] hover:bg-[#556e6b] transition"
+          className=" flex  text-[16px] font-normal items-center justify-center cursor-pointer bg-[#66837e] text-[#eaefef] px-[20px] py-[7px] rounded-md w-[100px] hover:bg-[#556e6b] transition"
         >
           Login
         </button>

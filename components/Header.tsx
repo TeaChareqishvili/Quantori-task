@@ -1,6 +1,7 @@
 import Naviagtion from "./Navigation";
 import LogInBtn from "./LogInBtn";
 import User from "./User";
+import Burger from "./Burger";
 
 export default function Header() {
   return (
@@ -8,10 +9,16 @@ export default function Header() {
       <div className="flex items-center justify-between   ">
         {" "}
         <User />
-        <Naviagtion />
+        <div className="md:flex hidden">
+          <Naviagtion />
+        </div>
       </div>
       <div>
-        <LogInBtn />
+        {" "}
+        <div className="md:flex hidden">
+          <LogInBtn />
+        </div>
+        <Burger />
       </div>
     </div>
   );

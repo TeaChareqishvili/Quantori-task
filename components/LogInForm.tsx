@@ -39,7 +39,7 @@ export default function LogInForm({ handleModalClose }: LogInFormProps) {
         <div className="relative">
           <label
             htmlFor="username"
-            className="absolute -top-3 left-2 bg-white px-1 text-sm font-medium text-[#66837e]"
+            className="absolute -top-3 left-2 bg-white px-1 text-sm font-normal text-[#66837e] text-[12px]"
           >
             Email
           </label>
@@ -48,14 +48,14 @@ export default function LogInForm({ handleModalClose }: LogInFormProps) {
             id="username"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            className="mt-1 block w-full text-[#66837e] px-3 py-2 border border-[#66837e] rounded-md shadow-sm focus:outline-none focus:ring-[#66837e] focus:border-[#66837e]"
+            className="mt-1 block w-full text-[#66837e] text-[15px] font-bold px-3 py-2 border border-[#66837e] rounded-md shadow-sm focus:outline-none focus:ring-[#66837e] focus:border-[#66837e]"
             placeholder="email@example.com"
           />
         </div>
         <div className="relative">
           <label
             htmlFor="password"
-            className="absolute -top-3 left-2 bg-white px-1 text-sm font-medium text-[#66837e]"
+            className="absolute -top-3 left-2 bg-white px-1 text-sm font-normal text-[#66837e] text-[12px]"
           >
             Password
           </label>
@@ -64,7 +64,7 @@ export default function LogInForm({ handleModalClose }: LogInFormProps) {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block text-[#66837e] w-full px-3 py-2 border border-[#66837e] rounded-md shadow-sm focus:outline-none focus:ring-[#66837e] focus:border-[#66837e]"
+            className="mt-1 block text-[#66837e]  text-[15px] font-bold w-full px-3 py-2 border border-[#66837e] rounded-md shadow-sm focus:outline-none focus:ring-[#66837e] focus:border-[#66837e]"
             placeholder="********"
           />
         </div>
@@ -73,14 +73,14 @@ export default function LogInForm({ handleModalClose }: LogInFormProps) {
           <button
             onClick={handleModalClose}
             type="button"
-            className="px-4 py-2 w-[100px] mr-[10px] h-[40px] bg-gray-100 text-[#66837e] border border-[#66837e] rounded-md hover:bg-gray-200 transition"
+            className="px-4 py-2 w-[100px] text-[16px] font-normal mr-[10px] h-[40px] bg-gray-100 text-[#66837e] border border-[#66837e] rounded-md hover:bg-gray-200 transition"
             disabled={loading}
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 w-[100px] h-[40px] flex items-center justify-center bg-[#66837e] text-white rounded-md hover:bg-[#556e6b] transition"
+            className="px-4 py-2 w-[100px] text-[16px] font-normal h-[40px] flex items-center justify-center bg-[#66837e] text-white rounded-md hover:bg-[#556e6b] transition"
             disabled={loading}
           >
             {loading ? <FaSpinner className="animate-spin mr-2" /> : "Login"}
