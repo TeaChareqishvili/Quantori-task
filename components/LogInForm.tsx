@@ -1,6 +1,6 @@
-export default function LogInForm() {
+export default function LogInForm({ handleModalClose }: any) {
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-14 py-10 bg-white rounded-lg shadow-lg">
+    <div className=" px-14 py-10 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-[#66837e] mb-6">Login</h2>
       <form className="space-y-6">
         <div className="relative">
@@ -33,6 +33,7 @@ export default function LogInForm() {
         </div>
         <div className="flex justify-between items-center mt-6">
           <button
+            onClick={handleModalClose}
             type="button"
             className="px-4 py-2 bg-gray-100 text-[#66837e] border border-[#66837e] rounded-md hover:bg-gray-200 transition"
           >
