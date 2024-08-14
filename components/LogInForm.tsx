@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Cookies from "js-cookie";
+import { loginUser } from "../utils/auth";
+import { FaSpinner } from "react-icons/fa";
 
 interface LogInFormProps {
   handleModalClose: () => void;
@@ -19,30 +20,11 @@ export default function LogInForm({ handleModalClose }: LogInFormProps) {
     setLoading(true);
 
     try {
-      const response = await fetch("https://dummyjson.com/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: userName,
-          password: password,
-          expiresInMins: 30,
-        }),
-      });
+      const data = await loginUser(userName, password);
+      console.log("Login successful!", data);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log("Login successful!", data);
-
-        Cookies.set("token", data.token, { expires: 1 });
-        console.log("Token set in cookies:", Cookies.get("token"));
-
-        handleModalClose();
-      } else {
-        throw new Error(data.message || "Something went wrong!");
-      }
+      window.location.reload();
+      handleModalClose();
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -91,17 +73,17 @@ export default function LogInForm({ handleModalClose }: LogInFormProps) {
           <button
             onClick={handleModalClose}
             type="button"
-            className="px-4 py-2 bg-gray-100 text-[#66837e] border border-[#66837e] rounded-md hover:bg-gray-200 transition"
+            className="px-4 py-2 w-[100px] mr-[10px] h-[40px] bg-gray-100 text-[#66837e] border border-[#66837e] rounded-md hover:bg-gray-200 transition"
             disabled={loading}
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-[#66837e] text-white rounded-md hover:bg-[#556e6b] transition"
+            className="px-4 py-2 w-[100px] h-[40px] flex items-center justify-center bg-[#66837e] text-white rounded-md hover:bg-[#556e6b] transition"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? <FaSpinner className="animate-spin mr-2" /> : "Login"}
           </button>
         </div>
       </form>

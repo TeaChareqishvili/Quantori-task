@@ -9,8 +9,6 @@ export default function LogInBtn() {
   const [token, setToken] = useState<string | null>(null);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
-  console.log(token, "token");
-
   useEffect(() => {
     // Check for token in cookies
     const savedToken = Cookies.get("token");
@@ -19,6 +17,7 @@ export default function LogInBtn() {
 
   const handleLogout = () => {
     Cookies.remove("token");
+    window.location.reload();
     setToken(null);
   };
 
