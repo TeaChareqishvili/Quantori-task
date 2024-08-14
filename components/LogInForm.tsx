@@ -1,17 +1,19 @@
 "use client";
+
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 interface LogInFormProps {
   handleModalClose: () => void;
 }
 
 export default function LogInForm({ handleModalClose }: LogInFormProps) {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [userName, setUserName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -33,6 +35,9 @@ export default function LogInForm({ handleModalClose }: LogInFormProps) {
 
       if (response.ok) {
         console.log("Login successful!", data);
+
+        Cookies.set("token", data.token, { expires: 1 });
+        console.log("Token set in cookies:", Cookies.get("token"));
 
         handleModalClose();
       } else {
